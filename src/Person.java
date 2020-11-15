@@ -33,6 +33,7 @@ public abstract class Person implements IInventory, IHitable{
     private EquipmentManager Inventory;
     private int maxHealth=50;
     private int currentHealth=40;
+    private EquipmentManager inventory = new EquipmentManager();
 
     public Person(String name)
     {
@@ -138,86 +139,98 @@ public abstract class Person implements IInventory, IHitable{
 
     @Override
     public int getMaxHealth() {
-        return 0;
+        return maxHealth;
     }
 
     @Override
     public int getCurrentHealth() {
-        return 0;
+        return currentHealth;
     }
 
     @Override
     public boolean isHitableDestroyed() {
+        if(getCurrentHealth() == 0 || getCurrentHealth() < 0) {
+            return true;
+        }
         return false;
     }
 
     @Override
     public int takeDamage(int dmg, int fire, int ice) {
-        return 0;
+        int totalDmg = dmg+fire+ice;
+        return (getCurrentHealth() - totalDmg);
     }
 
     @Override
     public int heal(int amt) {
-        return 0;
+        int newHp = (getCurrentHealth() + amt);
+        if(newHp == getMaxHealth()) {
+            return (getMaxHealth() - getCurrentHealth());
+        }
+        return amt;
     }
 
     @Override
     public void pickup(Equipment equipment) {
-
+        inventory.addEquipment(equipment);
     }
 
     @Override
+    //might be wrong
     public void transferAllEquipmentFrom(IInventory other) {
-
+        for(int i=0; i<other.countEquipment(); i++) {
+            pickup(getEquipment(i));
+        }
+        other.dropAllEquipment();
     }
 
     @Override
     public int countArmor() {
-        return 0;
+        return inventory.countArmor();
     }
 
     @Override
     public int countWeapon() {
-        return 0;
+        return inventory.countWeapon();
     }
 
     @Override
     public int countConsumables() {
-        return 0;
+        return inventory.countConsumables();
     }
 
     @Override
     public int countEquipment() {
-        return 0;
+        return inventory.countEquipment();
     }
 
     @Override
     public String getEquipmentList() {
-        return null;
+        return inventory.getEquipmentList();
     }
 
     @Override
     public String getEquipmentInfo(int index) {
-        return null;
+        return inventory.getEquipmentDetails(index);
     }
 
     @Override
     public Equipment getEquipment(int index) {
-        return null;
+        return inventory.getEquipment(index);
     }
 
     @Override
     public void dropEquipment(int index) {
-
+        inventory.removeEquipment(index);
     }
 
     @Override
     public void dropAllEquipment() {
-
+        inventory.clearAll();
     }
 
     @Override
     public void addEquipment(Equipment equipment) {
-
+        inventory.addEquipment(equipment);
     }
 }
