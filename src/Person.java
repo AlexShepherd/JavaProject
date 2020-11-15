@@ -22,10 +22,7 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-
-public abstract class Consumable extends Equipment implements IUsable;
-
-public class Person {
+public abstract class Person implements IInventory, IHitable{
 
     private String name;
     private ArrayList<String> thingsToSay = new ArrayList<String>();
@@ -34,14 +31,12 @@ public class Person {
     private Plackart plackart;
     private Weapon weapon;
     private EquipmentManager Inventory;
-    private int maxHealth;
-    private int currentHealth;
+    private int maxHealth=50;
+    private int currentHealth=40;
 
     public Person(String name)
     {
-
         setName(name);
-
     }
 
     private void setName(String name) {
@@ -66,7 +61,7 @@ public class Person {
         else
         {
 
-            result = weapon.attack();
+            result = weapon.attack(target);
 
         }
 
@@ -139,5 +134,90 @@ public class Person {
         int index = rand.nextInt(maxIndex);
         String  something = thingsToSay.get(index);
         return something;
+    }
+
+    @Override
+    public int getMaxHealth() {
+        return 0;
+    }
+
+    @Override
+    public int getCurrentHealth() {
+        return 0;
+    }
+
+    @Override
+    public boolean isHitableDestroyed() {
+        return false;
+    }
+
+    @Override
+    public int takeDamage(int dmg, int fire, int ice) {
+        return 0;
+    }
+
+    @Override
+    public int heal(int amt) {
+        return 0;
+    }
+
+    @Override
+    public void pickup(Equipment equipment) {
+
+    }
+
+    @Override
+    public void transferAllEquipmentFrom(IInventory other) {
+
+    }
+
+    @Override
+    public int countArmor() {
+        return 0;
+    }
+
+    @Override
+    public int countWeapon() {
+        return 0;
+    }
+
+    @Override
+    public int countConsumables() {
+        return 0;
+    }
+
+    @Override
+    public int countEquipment() {
+        return 0;
+    }
+
+    @Override
+    public String getEquipmentList() {
+        return null;
+    }
+
+    @Override
+    public String getEquipmentInfo(int index) {
+        return null;
+    }
+
+    @Override
+    public Equipment getEquipment(int index) {
+        return null;
+    }
+
+    @Override
+    public void dropEquipment(int index) {
+
+    }
+
+    @Override
+    public void dropAllEquipment() {
+
+    }
+
+    @Override
+    public void addEquipment(Equipment equipment) {
+
     }
 }

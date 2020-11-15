@@ -23,6 +23,7 @@ public class Barrel extends Chest implements IHitable
 {
     private int maxHealth = 50;
     private int currentHealth = 40;
+    private EquipmentManager inventory = new EquipmentManager();
 
     /**
      * Method Name: Barrel <br>
@@ -35,7 +36,8 @@ public class Barrel extends Chest implements IHitable
     public Barrel()
     {
         Random rand = new Random();
-        //add random equipment
+        inventory.makeRandomConsumable();
+        inventory.makeRandomArmor();
     }
 
     /**

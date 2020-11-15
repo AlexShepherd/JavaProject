@@ -21,7 +21,7 @@ import java.util.Random;
  */
 public class Chest implements IUsable, IInventory
 {
-    private EquipmentManager inventory;
+    private EquipmentManager inventory = new EquipmentManager();
 
     /**
      * Method Name: Chest <br>
@@ -34,7 +34,9 @@ public class Chest implements IUsable, IInventory
     public Chest()
     {
         Random rand = new Random();
-        //add random equipment
+        inventory.makeRandomArmor();
+        inventory.makeRandomConsumable();
+        inventory.makeRandomWeapon();
     }
 
     /**
@@ -66,7 +68,7 @@ public class Chest implements IUsable, IInventory
     @Override
     public void pickup(Equipment equipment)
     {
-        inventory.addEquipment();
+        inventory.addEquipment(equipment);
     }
 
     /**
@@ -173,7 +175,7 @@ public class Chest implements IUsable, IInventory
     @Override
     public String getEquipmentInfo(int index)
     {
-        return inventory.getEquipmentDetails();
+        return inventory.getEquipmentDetails(index);
     }
 
     /**
@@ -189,7 +191,7 @@ public class Chest implements IUsable, IInventory
     @Override
     public Equipment getEquipment(int index)
     {
-        return inventory.getEquipment();
+        return inventory.getEquipment(index);
     }
 
     /**
@@ -233,6 +235,6 @@ public class Chest implements IUsable, IInventory
     @Override
     public void addEquipment(Equipment equipment)
     {
-        inventory.addEquipment();
+        inventory.addEquipment(equipment);
     }
 }

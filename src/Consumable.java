@@ -21,7 +21,9 @@ public abstract class Consumable extends Equipment implements IUsable
 {
     public Consumable(String name, int price, double durability)
     {
-
+        this.name = name;
+        this.price = price;
+        this.durability = durability;
     }
 
     public void destroy()
