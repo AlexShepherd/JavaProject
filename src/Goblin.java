@@ -7,7 +7,6 @@ public class Goblin extends Person {
     public Goblin() {
 
         super("Goblin");
-
         {
             ArrayList<String> goblinSayings = new ArrayList<String>();
             goblinSayings.add("STOP!");
@@ -17,6 +16,9 @@ public class Goblin extends Person {
             setThingsToSay(goblinSayings);
         }
     }
+    public Goblin(String name) {
+        super(name);
+    }
 
     public void setGoblin(String name) {
 
@@ -25,6 +27,4 @@ public class Goblin extends Person {
 
     private void setName(String name) {
     }
-
 }
-

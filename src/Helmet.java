@@ -39,6 +39,4 @@ public class Helmet extends Armor
     {
         super("Helmet", 1, iceProtection, fireProtection);
     }
-
-
 }
