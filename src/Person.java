@@ -40,7 +40,8 @@ public abstract class Person implements IInventory, IHitable{
         setName(name);
     }
 
-    private void setName(String name) {
+    private void setName(String newname) {
+        this.name=newname;
     }
 
 
