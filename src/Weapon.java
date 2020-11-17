@@ -37,7 +37,6 @@ public class Weapon extends Equipment implements IUsable
 
     }
 
-
     public Weapon(String name, int dmg, int ice, int fire, WeaponHandedness weaponHand)
     {
         this.name = name;
