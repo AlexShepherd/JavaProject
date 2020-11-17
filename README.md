@@ -1,2 +1,2 @@
 # JavaProject
-for 1260
+Fantasy game
