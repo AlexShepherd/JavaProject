@@ -150,10 +150,7 @@ public abstract class Person implements IInventory, IHitable{
 
     @Override
     public boolean isHitableDestroyed() {
-        if(getCurrentHealth() == 0 || getCurrentHealth() < 0) {
-            return true;
-        }
-        return false;
+        return getCurrentHealth() <= 0;
     }
 
     @Override
@@ -177,10 +174,9 @@ public abstract class Person implements IInventory, IHitable{
     }
 
     @Override
-    //might be wrong
     public void transferAllEquipmentFrom(IInventory other) {
         for(int i=0; i<other.countEquipment(); i++) {
-            pickup(getEquipment(i));
+            pickup(other.getEquipment(i));
         }
         other.dropAllEquipment();
     }

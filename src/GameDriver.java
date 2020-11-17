@@ -70,6 +70,9 @@ public class GameDriver {
                     world.makeHuman();
                     System.out.println("Villager Made!");
                     break;
+                case "list chests":
+                    System.out.println(world.listChests());
+                    break;
                 case "list people":
                     System.out.println(world.listPeople());
                     break;
@@ -77,11 +80,14 @@ public class GameDriver {
                     System.out.println(world.getPlayerInfo());
                 case "my inventory":
                     System.out.println(world.listPlayerInventory());
-                case "use weapon human1":
+                
+                    //case "use weapon villager":
                     //no weapon specifier that i see
-                    world.useEquipment(world.player.getEquipment(0), world.human1);
+                    //world.useEquipment(world.player.getEquipment(0), wo);
 
                     //bad design, searching an array would be better in hindsight
+                    /*
+                    
                 case "transfer":
                     System.out.println("Source?");
 
@@ -150,7 +156,10 @@ public class GameDriver {
                 case "exit":
                     System.out.println("Thanks for playing!");
                     System.exit(0);
+          }
+            */
             }
         }
     }
+}
 }

@@ -27,11 +27,4 @@ public class Human extends Person {
     public Human(String name) {
         super(name);
     }
-
-    public void setHuman(String name) {
-        setName(name);
-    }
-
-    private void setName(String name) {
-    }
 }

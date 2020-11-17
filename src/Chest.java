@@ -33,7 +33,6 @@ public class Chest implements IUsable, IInventory
      */
     public Chest()
     {
-        Random rand = new Random();
         inventory.makeRandomArmor();
         inventory.makeRandomConsumable();
         inventory.makeRandomWeapon();

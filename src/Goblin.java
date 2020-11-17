@@ -23,25 +23,8 @@ public class Goblin extends Person {
             setThingsToSay(goblinSayings);
         }
     }
+
     public Goblin(String name) {
         super(name);
-    }
-
-    public String getName() {
-
-        return "Goblin";
-    }
-
-    public void setGoblin(String name) {
-
-        setName(name);
-    }
-
-    private void setName(String name) {
-    }
-
-    @Override
-    public String toString() {
-        return "Goblin";
     }
 }
