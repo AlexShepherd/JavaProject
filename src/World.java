@@ -4,21 +4,7 @@ public class World {
     public ArrayList<Chest> chests;
     public ArrayList<Barrel> barrels;
     public ArrayList<Person> people;
-    public ArrayList<Goblin> goblins;
-
     public Person player;
-
-    Barrel barrel1 = new Barrel();
-    Barrel barrel2 = new Barrel();
-    Barrel barrel3 = new Barrel();
-
-    Chest chest1 = new Chest();
-    Chest chest2 = new Chest();
-
-    Goblin goblin1 = new Goblin();
-    Goblin goblin2 = new Goblin();
-
-    Human human1 = new Human();
 
     public World() {
         chests = new ArrayList<>();
@@ -27,60 +13,57 @@ public class World {
     }
 
     public void makeChest() {
-        chests.add(chest1);
-        chests.add(chest2);
+        chests.add(new Chest());
     }
 
     public void makeBarrel() {
-        barrels.add(barrel1);
-        barrels.add(barrel2);
-        barrels.add(barrel3);
+        barrels.add(new Barrel());
     }
 
     public void makeGoblin() {
-        goblins.add(goblin1);
-        goblins.add(goblin2);
+        people.add(new Goblin("Goblin"));
     }
 
     public void makeHuman() {
-        people.add(human1);
-        //people.add(player);       not sure if we want player in here
+        people.add(new Human("Villager"));
     }
 
     public String listChests() {
-        return ("0. Chest\n\t" + chest1.getEquipmentList() +
-                "\n1. Chest\n\t" + chest2.getEquipmentList());
+        String str = "";
+        for (int i = 0; i<chests.size(); i++) {
+            str += i + ". Chest\n\t" + chests.get(i).getEquipmentList() + ("\n");
+        }
+        return str;
     }
 
     public String listBarrels() {
-        return ("0. Barrel\n\t" + barrel1.getEquipmentList() +
-                "\n1. Barrel\n\t" + barrel2.getEquipmentList() +
-                "\n2. Barrel\n\t" + barrel3.getEquipmentList());
+        String str = "";
+        for (int i = 0; i<barrels.size(); i++) {
+            str += i + ". Barrel\n\t" + barrels.get(i).getEquipmentList() + ("\n");
+        }
+        return str;
     }
 
     public String listPeople() {
-        return ("0. Goblin\n\t" + goblin1.getName() +
-                "\n1. Goblin\n\t" + goblin2.getName() +
-                "\n2. Human\n\t" + human1.getName());
+        String str = "";
+        for (int i = 0; i<people.size(); i++) {
+            str += i + ". People\n\t" + people.get(i).getEquipmentList() + ("\n");
+        }
+        return str;
     }
 
     public String listTargets() {
-        System.out.println(listBarrels() + listPeople());
-        return null; //not sure how to return both methods
+        return (listBarrels() + listPeople());
     }
 
     public String speakTo(Person person) {
         return person.saySomething();
     }
 
-    public int attack(IHitable target) {        //this is done incorrectly; don't know how to check player's weapon
-        if (player.countWeapon() == 0) {
-            System.out.println("No weapon equipped!");
-        }
+    public int attack(IHitable target) {
         return player.attack(target);
     }
 
-    //may have problems because of transferAllEquipmentFrom() implementation
     public void transferEquipment(IInventory source, IInventory destination) {
         source.transferAllEquipmentFrom(destination);
     }

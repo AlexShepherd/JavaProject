@@ -16,15 +16,8 @@ public class Goblin extends Person {
             setThingsToSay(goblinSayings);
         }
     }
+
     public Goblin(String name) {
         super(name);
-    }
-
-    public void setGoblin(String name) {
-
-        setName(name);
-    }
-
-    private void setName(String name) {
     }
 }
