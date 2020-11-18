@@ -49,113 +49,168 @@ public class GameDriver {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
+
         while (!gameOver) {
             System.out.println("What would you like to do?");
-            String input = scan.nextLine().toLowerCase();
+            String[] input = scan.nextLine().toLowerCase().split(" ");
+            String command = "";
+            String type = "";
+            String target = "";
 
-            switch (input) {
-                case "make barrel":
-                    world.makeBarrel();
-                    System.out.println("Barrels made!");
-                    break;
-                case "make chest":
-                    world.makeChest();
-                    System.out.println("Chests made!");
-                    break;
-                case "make goblin":
-                    world.makeGoblin();
-                    System.out.println("Goblins Made!");
-                    break;
-                case "make human":
-                    world.makeHuman();
-                    System.out.println("Villager Made!");
-                    break;
-                case "list chests":
-                    System.out.println(world.listChests());
-                    break;
-                case "list people":
-                    System.out.println(world.listPeople());
-                    break;
-                case "my info":
-                    System.out.println(world.getPlayerInfo());
-                case "my inventory":
-                    System.out.println(world.listPlayerInventory());
-                    //case "use weapon villager":
-                    //no weapon specifier that i see
-                    //world.useEquipment(world.player.getEquipment(0), wo);
-
-                    //bad design, searching an array would be better in hindsight
-                    /*
-                case "transfer":
-                    System.out.println("Source?");
-
-                    IInventory source = null;
-                    IInventory dest = null;
-
-                    input = scan.nextLine().toLowerCase();
-                    if (input.equals("player"))
-                        source = world.player;
-
-                    if (input.equals("barrel1"))
-                        source = world.barrel1;
-
-                    if (input.equals("barrel2"))
-                        source = world.barrel2;
-
-                    if (input.equals("barrel3"))
-                        source = world.barrel3;
-
-                    if (input.equals("chest1"))
-                        source = world.chest1;
-
-                    if (input.equals("chest2"))
-                        source = world.chest2;
-
-                    if (input.equals("goblin1"))
-                        source = world.goblin1;
-
-                    if (input.equals("goblin2"))
-                        source = world.goblin2;
-
-                    if (input.equals("human1"))
-                        source = world.human1;
-
-                    System.out.println("Destination?");
-                    if (input.equals("player"))
-                        dest = world.player;
-
-                    if (input.equals("barrel1"))
-                        dest = world.barrel1;
-
-                    if (input.equals("barrel2"))
-                        dest = world.barrel2;
-
-                    if (input.equals("barrel3"))
-                        dest = world.barrel3;
-
-                    if (input.equals("chest1"))
-                        dest = world.chest1;
-
-                    if (input.equals("chest2"))
-                        dest = world.chest2;
-
-                    if (input.equals("goblin1"))
-                        dest = world.goblin1;
-
-                    if (input.equals("goblin2"))
-                        dest = world.goblin2;
-
-                    if (input.equals("human1"))
-                        dest = world.human1;
-
-                    world.transferEquipment(source, dest);
-                    System.out.println("All equipment transferred!");
-
-                case "exit":
-                    System.out.println("Thanks for playing!");
-                    System.exit(0);
+            if (input.length == 3) {
+                command = input[0];
+                type = input[1];
+                target = input[2];
             }
-            */
+            if (input.length == 2) {
+                command = input[0];
+                type = input[1];
+            }
+            if (input.length == 1) {
+                command = input[0];
+            }
+
+            if (command.equals("make")) {
+                switch (type) {
+                    case "barrel":
+                        world.makeBarrel();
+                        System.out.println("Barrel made!");
+                        break;
+                    case "chest":
+                        world.makeChest();
+                        System.out.println("Chest made!");
+                        break;
+                    case "goblin":
+                        world.makeGoblin();
+                        System.out.println("Goblin made!");
+                        break;
+                    case "human":
+                        world.makeHuman();
+                        System.out.println("Villager made!");
+                        break;
+                    case "":
+                        System.out.println("Make what?");
+                        break;
+                    default:
+                        System.out.println("You can't make this! Try again.");
+                        break;
+                }
+            }
+            if (command.equals("list")) {
+                switch (type) {
+                    case "chests":
+                        System.out.println(world.listChests());
+                        break;
+                    case "people":
+                        System.out.println(world.listPeople());
+                        break;
+                    case " ":
+                        System.out.println("List what?");
+                        break;
+                    default:
+                        System.out.println("This can't be listed, please try again");
+                        break;
+                }
+            }
+            //both are throwing null pointer exceptions
+            if (command.equals("my")) {
+                switch (type) {
+                    case "info":
+                        System.out.println(world.getPlayerInfo());
+                        break;
+                    case "inventory":
+                        System.out.println(world.listPlayerInventory());
+                        break;
+                }
+            }
+            //This is more of a proof of concept, because we aren't sure how to implement it fully
+            if (command.equals("use")) {
+                System.out.println("use what?");
+                if (type.equals("weapon")) {
+                    System.out.println("target?");
+                    //118 is because having a third substring caused errors when typing inputs with only 2 words
+                    target = scan.nextLine().toLowerCase();
+                    if (target.equals("person0")) {
+                        world.useEquipment(world.player.getEquipment(0), world.people.get(0));
+                        System.out.println("used weapon on person0!");
+                    }
+                }
+            }
+            if (command.equals("attack")) {
+                System.out.println("attack what?");
+                if (type.equals("weapon")) {
+                    System.out.println("target?");
+                    //118 is because having a third substring caused errors when typing inputs with only 2 words
+                    target = scan.nextLine().toLowerCase();
+                    if (target.equals("person 0")) {
+                        world.useEquipment(world.player.getEquipment(0), world.people.get(0));
+                        System.out.println("attacked person0!");
+                    }
+                }
+            }
+            //this method assumes that the first person created is a goblin, and the second is a human.
+            //again, a proof of concept because we're not sure how to implement
+            if (command.equals("transfer")) {
+                System.out.println("Source?");
+
+                IInventory source = null;
+                IInventory dest = null;
+
+                //workaround
+                String desti = scan.nextLine().toLowerCase();
+                switch(desti) {
+                    case "player":
+                        source = world.player;
+                        break;
+                    case "goblin":
+                        source = world.people.get(0);
+                    case "human":
+                        source = world.people.get(1);
+                    case "chest":
+                        source = world.chests.get(0);
+                    case "barrel":
+                        source = world.barrels.get(0);
+                    default:
+                        System.out.println("Invalid source");
+                }
+                System.out.println("target?");
+                String targ = scan.nextLine().toLowerCase();
+                switch (targ) {
+                    case "player":
+                        dest = world.player;
+                        break;
+                    case "goblin":
+                        dest = world.people.get(0);
+                    case "human":
+                        dest = world.people.get(1);
+                    case "chest":
+                        dest = world.chests.get(0);
+                    case "barrel":
+                        dest = world.barrels.get(0);
+                    default:
+                        System.out.println("Invalid source");
+                }
+                world.transferEquipment(source, dest);
+                System.out.println("All equipment transferred!");
+            }
+            //again assuming that the first created person is a goblin, and second is a human here
+            //unsure how to implement correctly but is proof of concept
+            if (command.equals("lookat"))
+            {
+                switch(type) {
+                    case "human":
+                        System.out.println(world.people.get(0).toString());
+                    case "goblin":
+                        System.out.println(world.people.get(1).toString());
+                    case "chest":
+                        System.out.println(world.chests.get(0).toString());
+                    case "barrel":
+                        System.out.println(world.chests.get(0).toString());
+                }
+            }
+            if (command.equals("exit")) {
+                System.out.println("Thanks for playing!");
+                System.exit(0);
             }
         }
     }
