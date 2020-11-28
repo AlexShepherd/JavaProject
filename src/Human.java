@@ -33,11 +33,9 @@ public class Human extends Person {
 
         super("Villager");
         {
-            ArrayList<String> humanSayings = new ArrayList<String>();
-            humanSayings.add("Hello!");
-            humanSayings.add("Can I help you?");
-            humanSayings.add("You look strong!");
-            setThingsToSay(humanSayings);
+            thingsToSay.add("Hello!");
+            thingsToSay.add("Can I help you?");
+            thingsToSay.add("You look strong!");
         }
     }
 

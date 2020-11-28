@@ -17,18 +17,17 @@
  * Date last modified: 11-4-2020
  * @author Roberto Hernandez
  */
-public interface IInventory
-{
-    public void pickup(Equipment equipment);
-    public void transferAllEquipmentFrom(IInventory other);
-    public int countArmor();
-    public int countWeapons();
-    public int countConsumables();
-    public int countEquipment();
-    public String getEquipmentList();
-    public String getEquipmentInfo(int index);
-    public Equipment getEquipment(int index);
-    public void dropEquipment(int index);
-    public void dropAllEquipment();
-    public void addEquipment(Equipment equipment);
-}
+    public interface IInventory
+    {
+        public void pickup(Equipment equipment);
+        public void transferAllEquipmentFrom(IInventory other);
+        public int countArmor();
+        public int countWeapons();
+        public int countConsumables();
+        public int countEquipment();
+        public String getEquipmentList();
+        public String getEquipmentInfo(int index);
+        public Equipment getEquipment(int index);
+        public void dropEquipment(int index);
+        public void dropAllEquipment();
+    }
