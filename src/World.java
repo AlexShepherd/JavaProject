@@ -37,6 +37,13 @@ public class World {
         chests = new ArrayList<>();
         barrels = new ArrayList<>();
         people = new ArrayList<>();
+        for (int i = 0; i < 3; i++)
+        {
+            makeChest();
+            makeBarrel();
+            makeGoblin();
+        }
+        player = new Human("Player");
     }
 
     /**
@@ -47,8 +54,13 @@ public class World {
      * Date created: 11-13-2020
      * Date last modified: 11-17-2020
      */
-    public void makeChest() {
-        chests.add(new Chest());
+    public void makeChest()
+    {
+        Chest chest = new Chest();
+        chest.pickup(EquipmentManager.makeRandomArmor());
+        chest.pickup(EquipmentManager.makeRandomWeapon());
+        chest.pickup(EquipmentManager.makeRandomConsumable());
+        chests.add(chest);
     }
 
     /**
@@ -59,8 +71,13 @@ public class World {
      * Date created: 11-13-2020
      * Date last modified: 11-17-2020
      */
-    public void makeBarrel() {
-        barrels.add(new Barrel());
+    public void makeBarrel()
+    {
+        Barrel barrel = new Barrel();
+        barrel.pickup(EquipmentManager.makeRandomArmor());
+        barrel.pickup(EquipmentManager.makeRandomWeapon());
+        barrel.pickup(EquipmentManager.makeRandomConsumable());
+        barrels.add(barrel);
     }
 
     /**
@@ -72,7 +89,8 @@ public class World {
      * Date last modified: 11-17-2020
      */
     public void makeGoblin() {
-        people.add(new Goblin("Goblin"));
+        Goblin goblin = new Goblin();
+        people.add(goblin);
     }
 
     /**
@@ -84,7 +102,8 @@ public class World {
      * Date last modified: 11-17-2020
      */
     public void makeHuman() {
-        people.add(new Human("Villager"));
+        Human human = new Human("Villager");
+        people.add(human);
     }
 
     /**
@@ -181,7 +200,7 @@ public class World {
 
     /**
      * Method Name: transferEquipment<br>
-     * Method Purpose: transfers entire equipment between intentory enabled objects<br>
+     * Method Purpose: transfers entire equipment between inventory enabled objects<br>
      *
      * <hr>
      * Date created: 11-13-2020
@@ -189,8 +208,14 @@ public class World {
      * @param destination
      * @param source
      */
-    public void transferEquipment(IInventory source, IInventory destination) {
-        source.transferAllEquipmentFrom(destination);
+    public void transferEquipment(IInventory source, IInventory destination)
+    {
+        int amount = source.countEquipment();
+        for (int i = 0; i < amount; i++)
+        {
+            destination.pickup(source.getEquipment(i));
+        }
+        source.dropAllEquipment();
     }
 
     /**
@@ -257,9 +282,9 @@ public class World {
      * @param eqmt
      * @return boolean
      */
+
     public boolean equipEquipment(Equipment eqmt) {
-        player.equip(eqmt);
-        return true;
+        return player.equip(eqmt);
     }
 
     /**
@@ -272,8 +297,11 @@ public class World {
      * @param eqmt, target
      * @return boolean
      */
-    public boolean useEquipment(Equipment eqmt, Person target) {
-        target.equip(eqmt);
-        return true;
+    public boolean useEquipment(Equipment eqmt, Person target)
+    {
+        if(eqmt instanceof Weapon) return ((Weapon) eqmt).use(target);
+        if(eqmt instanceof Armor) return ((Armor) eqmt).use(target);
+        if(eqmt instanceof Consumable) return ((Consumable)eqmt).use(target);
+        return false;
     }
 }

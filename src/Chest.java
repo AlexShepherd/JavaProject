@@ -112,7 +112,7 @@ public class Chest implements IUsable, IInventory
      * @return int
      */
     @Override
-    public int countWeapon()
+    public int countWeapons()
     {
         return inventory.countWeapon();
     }

@@ -22,7 +22,7 @@ public interface IInventory
     public void pickup(Equipment equipment);
     public void transferAllEquipmentFrom(IInventory other);
     public int countArmor();
-    public int countWeapon();
+    public int countWeapons();
     public int countConsumables();
     public int countEquipment();
     public String getEquipmentList();
