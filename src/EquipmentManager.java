@@ -63,9 +63,17 @@ public class EquipmentManager {
         int num =0;                //total number of items
         num += equipment.size();
         return num;
-
     }
 
+    public int countWeapons()
+    {
+        int weaponCount = 0;
+        for(Equipment e:equipment)
+        {
+            if(e instanceof Weapon) weaponCount++;
+        }
+        return weaponCount;
+    }
     /**
      * Method Name: countArmor <br>
      * Method Purpose: counts up all armors <br>
@@ -248,7 +256,7 @@ public class EquipmentManager {
      * Date last modified: 11-12-2020
      * @author Matthew Beeler
      */
-    public Weapon makeRandomWeapon()
+    public static Weapon makeRandomWeapon()
     {
         int Num = rand.nextInt(4);
         Weapon Ran;
@@ -270,7 +278,7 @@ public class EquipmentManager {
          * Date last modified: 11-12-2020
          * @author Matthew Beeler
          */
-        public Armor makeRandomArmor()
+        public static Armor makeRandomArmor()
         {
             int Num = rand.nextInt(2);
             Armor Ran;
@@ -290,7 +298,7 @@ public class EquipmentManager {
      * Date last modified: 11-8-2020
      * @author Matthew Beeler
      */
-    public Consumable makeRandomConsumable()
+    public static Consumable makeRandomConsumable()
         {
             Consumable Ran = new HealthKit();
             /*int Num = rand.nextInt(2);  //blocked out currently as Healthkit is the only current consumable.

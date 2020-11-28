@@ -181,4 +181,10 @@ public class Armor extends Equipment
                 "ice:" + iceProtection + ", " +
                 "fire:" + fireProtection + "}";
     }
+
+    public boolean use(Person person)
+    {
+        person.equip(this);
+        return true;
+    }
 }

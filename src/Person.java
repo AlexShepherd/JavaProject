@@ -1,170 +1,83 @@
-// ---------------------------------------------------------------------------
-// File name: Person.java
-// Project name: Game Project
-// ---------------------------------------------------------------------------
-// Creator’s name and email: Roberto Hernandez, hernandezr@etsu.edu ; Flavio Sanguinetti , sanguinetti@etsu.edu
-// Course-Section: CSCI-1260-900
-// Creation Date: 11-4-2020
-// Date of Last Modification: 11-4-2020
-// ---------------------------------------------------------------------------
-
-/**
- * Class Name: Person <br>
- * Class Purpose: abstract Person class implementing IInventory and IHitable<br>
- *
- * <hr>
- * Date created: 11-4-2020
- * Date last modified: 11-4-2020
- * @author Roberto Hernandez & Flavio Sanguinetti
- */
-
-
 import java.util.ArrayList;
-import java.util.Random;
 
-public abstract class Person implements IInventory, IHitable{
-
+public abstract class Person implements IHitable, IInventory
+{
     private String name;
-    private ArrayList<String> thingsToSay = new ArrayList<String>();
-    private ArrayList<String> saySomething = new ArrayList<String>();
+    protected ArrayList<String> thingsToSay;
     private Helmet helmet;
     private Plackart plackart;
     private Weapon weapon;
-    private EquipmentManager Inventory;
-    private int maxHealth=50;
-    private int currentHealth=40;
-    private EquipmentManager inventory = new EquipmentManager();
+    private EquipmentManager inventory;
+    private int maxHealth;
+    private int currentHealth;
 
     public Person(String name)
     {
-        setName(name);
-    }
-
-    private void setName(String name) {
-    }
-
-
-    public boolean equip(Equipment e){
-
-        return true;
-    }
-
-    public int attack(IHitable target){
-
-        int result = 0;
-
-        if(weapon.getName() == null)
-        {
-
-            result = 0;
-
-        }
-        else
-        {
-
-            result = weapon.attack(target);
-
-        }
-
-        return result;
-    }
-
-    public String getName(){
-
-        return name;
-    }
-
-    public String toString(){
-
-        String helmetName = null;
-        String plackartName = null;
-        String weaponName = null;
-
-        if(helmet.getName() == null){
-
-            helmetName = "None";
-
-        } else {
-
-            helmetName = helmet.getName();
-
-        }
-
-        if(plackart.getName() == null){
-
-            plackartName = "None";
-
-        } else {
-
-            plackartName = plackart.getName();
-
-        }
-
-        if(weapon.getName() == null){
-
-            weaponName = "None";
-
-        } else {
-
-            weaponName = weapon.getName();
-
-        }
-
-        return "Name: " + name + '\n' +
-                "Health: " + currentHealth + "/" + maxHealth + '\n' +
-                "Helmet: " + helmetName + '\n' +
-                "Plackart: " + plackartName + '\n' +
-                "Weapon " + weaponName + '\n';
-    }
-
-    public ArrayList<String> getThingsToSay(){
-
-        return thingsToSay;
-    }
-
-    public void setThingsToSay(ArrayList<String> list){
-
-        thingsToSay = list;
-
+        this.name = name;
+        maxHealth = 50;
+        currentHealth = 40;
+        inventory = new EquipmentManager();
+        thingsToSay = new ArrayList<>();
     }
 
     public String saySomething()
     {
-        Random rand = new Random();
-        int maxIndex = thingsToSay.size();
-        int index = rand.nextInt(maxIndex);
-        String  something = thingsToSay.get(index);
-        return something;
+        return "";
     }
 
-    @Override
-    public int getMaxHealth() {
+    public int getMaxHealth()
+    {
         return maxHealth;
     }
 
     @Override
-    public int getCurrentHealth() {
+    public int getCurrentHealth()
+    {
         return currentHealth;
     }
 
     @Override
-    public boolean isHitableDestroyed() {
-        return getCurrentHealth() <= 0;
+    public boolean isHitableDestroyed()
+    {
+        return currentHealth <= 0;
     }
 
     @Override
-    public int takeDamage(int dmg, int fire, int ice) {
-        int totalDmg = dmg+fire+ice;
-        return (getCurrentHealth() - totalDmg);
-    }
-
-    @Override
-    public int heal(int amt) {
-        int newHp = (getCurrentHealth() + amt);
-        if(newHp == getMaxHealth()) {
-            return (getMaxHealth() - getCurrentHealth());
+    public int takeDamage(int dmg, int fire, int ice)
+    {
+        int armorBonus = 0;
+        if(helmet != null)
+        {
+            fire -= (helmet.hasFireProtection() ? 3:0);
+            ice -= (helmet.hasIceProtection() ? 3:0);
+            armorBonus += helmet.getArmorBonus()/2;
         }
-        return amt;
+        if(plackart != null)
+        {
+            fire -= (plackart.hasFireProtection() ? 3:0);
+            ice -= (plackart.hasIceProtection() ? 3:0);
+            armorBonus += plackart.getArmorBonus()/2;
+        }
+        fire = (fire < 0 ? 0:fire);
+        ice = (ice < 0 ? 0:ice);
+        int damage = dmg + fire + ice;
+        damage = (damage <= armorBonus) ? 0:(damage - armorBonus);
+        currentHealth -= damage;
+        return damage;
+    }
+
+    @Override
+    public int heal(int amt)
+    {
+        int temp = maxHealth - currentHealth;
+        if(temp >= amt)
+        {
+            currentHealth += amt;
+            return amt;
+        }
+        currentHealth = maxHealth;
+        return temp;
+
     }
 
     @Override
@@ -174,7 +87,9 @@ public abstract class Person implements IInventory, IHitable{
 
     @Override
     public void transferAllEquipmentFrom(IInventory other) {
-        for(int i=0; i<other.countEquipment(); i++) {
+        int otherSize = other.countEquipment();
+        for(int i = 0; i < otherSize; i++)
+        {
             pickup(other.getEquipment(i));
         }
         other.dropAllEquipment();
@@ -186,8 +101,8 @@ public abstract class Person implements IInventory, IHitable{
     }
 
     @Override
-    public int countWeapon() {
-        return inventory.countWeapon();
+    public int countWeapons() {
+        return inventory.countWeapons();
     }
 
     @Override
@@ -221,12 +136,62 @@ public abstract class Person implements IInventory, IHitable{
     }
 
     @Override
-    public void dropAllEquipment() {
+    public void dropAllEquipment()
+    {
         inventory.clearAll();
     }
 
-    @Override
-    public void addEquipment(Equipment equipment) {
-        inventory.addEquipment(equipment);
+    public boolean equip(Equipment e)
+    {
+        if(e instanceof Plackart) return equipPlackart((Plackart)e);
+        if(e instanceof Helmet) return equipHelmet((Helmet)e);
+        if(e instanceof Weapon) return equipWeapon((Weapon) e);
+        return false;
+    }
+
+    public int attack(IHitable target)
+    {
+        if(weapon != null)
+        {
+            return target.takeDamage(weapon.getNormalDamage(), weapon.getFireDamage(), weapon.getIceDamage());
+        }
+        return 0;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public String toString()
+    {
+        String information = "\n";
+        information += "Name: " + name + "\n";
+        information += "Health: " + currentHealth + "/" + maxHealth + "\n";
+        information += "Helmet: " + (helmet == null ? "None":helmet.getName()) + "\n";
+        information += "Plackart: " + (plackart == null ? "None":plackart.getName()) + "\n";
+        information += "Weapon: " + (weapon == null ? "None":weapon.getName()) + "\n";
+        return information;
+    }
+
+    private boolean equipHelmet(Helmet helmet)
+    {
+        if(this.helmet != null) pickup(this.helmet);
+        this.helmet = helmet;
+        return true;
+    }
+
+    private boolean equipPlackart(Plackart plackart)
+    {
+        if(this.plackart != null) pickup(this.plackart);
+        this.plackart = plackart;
+        return true;
+    }
+
+    private boolean equipWeapon(Weapon weapon)
+    {
+        if(this.weapon != null) pickup(this.weapon);
+        this.weapon = weapon;
+        return true;
     }
 }
