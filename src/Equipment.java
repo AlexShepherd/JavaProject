@@ -119,48 +119,11 @@ public class Equipment
      */
     public String getDurabilityStatus()
     {
-        int ds = 0;
-        String status = "";
-        if (getDurability() >= 0.9)
-        {
-            ds = 1;
-        }
-        else if(getDurability() >= 0.75)
-        {
-            ds = 2;
-        }
-        else if(getDurability() >= 0.5)
-        {
-            ds = 3;
-        }
-        else if(getDurability() >= 0.3)
-        {
-            ds = 4;
-        }
-        else if(getDurability() >= 0)
-        {
-            ds = 5;
-        }
-
-        switch(ds)
-        {
-            case 1:
-                status = "Great condition";
-                break;
-            case 2:
-                status = "Good condition";
-                break;
-            case 3:
-                status = "Fair condition";
-                break;
-            case 4:
-                status = "Poor condition";
-                break;
-            case 5:
-                status = "Almost broken";
-                break;
-        }
-        return status;
+        if(durability >= .9) return "Great Condition";
+        if(durability > .75) return "Good Condition";
+        if(durability > .5) return "Fair Condition";
+        if(durability > .3) return "Poor Condition";
+        return "Almost Broken";
     }
 
     /**
