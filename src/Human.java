@@ -22,24 +22,6 @@ import java.util.ArrayList;
 public class Human extends Person {
 
     /**
-     * Method Name: World <br>
-     * Method Purpose: constructor<br>
-     *
-     * <hr>
-     * Date created: 11-13-2020
-     * Date last modified: 11-15-2020
-     */
-    public Human() {
-
-        super("Villager");
-        {
-            thingsToSay.add("Hello!");
-            thingsToSay.add("Can I help you?");
-            thingsToSay.add("You look strong!");
-        }
-    }
-
-    /**
      * Method Name: Human<br>
      * Method Purpose: parameterized constructor<br>
      *
@@ -49,5 +31,10 @@ public class Human extends Person {
      */
     public Human(String name) {
         super(name);
+    }
+private void setConversation() {
+    thingsToSay.add("Hello!");
+    thingsToSay.add("Can I help you?");
+    thingsToSay.add("You look strong!");
     }
 }
