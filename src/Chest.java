@@ -221,19 +221,4 @@ inventory = new EquipmentManager();
     {
         inventory.clearAll();
     }
-
-    /**
-     * Method Name: addEquipment <br>
-     * Method Purpose: implementing addEquipment method<br>
-     *
-     * <hr>
-     * Date created: 11-11-2020 <br>
-     * Date last modified: 11-11-2020 <br>
-     * @param equipment 
-     */
-    @Override
-    public void addEquipment(Equipment equipment)
-    {
-        inventory.addEquipment(equipment);
-    }
 }
