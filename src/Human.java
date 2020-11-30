@@ -27,9 +27,4 @@ public class Human extends Person {
         thingsToSay.add("Can I help you?");
         thingsToSay.add("You look strong!");
     }
-
-    @Override
-    public void addEquipment(Equipment equipment) {
-
-    }
 }
