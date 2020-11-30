@@ -248,17 +248,20 @@ public class EquipmentManager {
      * Date last modified: 11-12-2020
      * @author Matthew Beeler
      */
-    public Weapon makeRandomWeapon()
+    public static Weapon makeRandomWeapon()
     {
-        int Num = rand.nextInt(4);
-        Weapon Ran;
-        switch (Num) {
-            case 1:  Ran = new Sword();         break;
-            case 2:  Ran = new LongBow();       break;
-            case 3:  Ran = new ThrowingAxe();   break;
-            case 0:
-            default: Ran = new Spear();         break;}
-        return Ran;
+        Random rand = new Random();
+        switch(rand.nextInt(4))
+        {
+            case 0 :
+                return new Spear();
+            case 1 :
+                return new Sword();
+            case 2 :
+                return new LongBow();
+            default :
+                return new ThrowingAxe();
+        }
     }
 
         /**
@@ -270,15 +273,11 @@ public class EquipmentManager {
          * Date last modified: 11-12-2020
          * @author Matthew Beeler
          */
-        public Armor makeRandomArmor()
+        public static Armor makeRandomArmor()
         {
-            int Num = rand.nextInt(2);
-            Armor Ran;
-            switch (Num) {
-                default:
-                case 0:  Ran = new Plackart();    break;
-                case 1:  Ran = new Helmet();      break;}
-                return Ran;
+            Random rand = new Random();
+            if(rand.nextInt(2) == 1) return new Helmet();
+            return new Plackart();
         }
 
     /**
@@ -290,7 +289,7 @@ public class EquipmentManager {
      * Date last modified: 11-8-2020
      * @author Matthew Beeler
      */
-    public Consumable makeRandomConsumable()
+    public static Consumable makeRandomConsumable()
         {
             Consumable Ran = new HealthKit();
             /*int Num = rand.nextInt(2);  //blocked out currently as Healthkit is the only current consumable.

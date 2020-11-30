@@ -10,92 +10,139 @@
 
 import java.util.ArrayList;
 
-public class World {
+public class World
+{
     public ArrayList<Chest> chests;
     public ArrayList<Barrel> barrels;
     public ArrayList<Person> people;
     public Person player;
 
-    public World() {
+    public World()
+    {
         chests = new ArrayList<>();
         barrels = new ArrayList<>();
         people = new ArrayList<>();
-    }
-
-    public void makeChest() {
-        chests.add(new Chest());
-    }
-
-    public void makeBarrel() {
-        barrels.add(new Barrel());
-    }
-
-    public void makeGoblin() {
-        people.add(new Goblin("Goblin"));
-    }
-
-    public void makeHuman() {
-        people.add(new Human("Villager"));
-    }
-
-    public String listChests() {
-        String str = "";
-        for (int i = 0; i<chests.size(); i++) {
-            str += i + ". Chest\n\t" + chests.get(i).getEquipmentList() + ("\n");
+        for (int i = 0; i < 3; i++)
+        {
+            makeChest();
+            makeBarrel();
+            makeGoblin();
         }
-        return str;
+        player = new Human("Player");
     }
 
-    public String listBarrels() {
-        String str = "";
-        for (int i = 0; i<barrels.size(); i++) {
-            str += i + ". Barrel\n\t" + barrels.get(i).getEquipmentList() + ("\n");
+    public void makeChest()
+    {
+        Chest chest = new Chest();
+        chest.pickup(EquipmentManager.makeRandomArmor());
+        chest.pickup(EquipmentManager.makeRandomWeapon());
+        chest.pickup(EquipmentManager.makeRandomConsumable());
+        chests.add(chest);
+    }
+
+    public void makeBarrel()
+    {
+        Barrel barrel = new Barrel();
+        barrel.pickup(EquipmentManager.makeRandomArmor());
+        barrel.pickup(EquipmentManager.makeRandomWeapon());
+        barrel.pickup(EquipmentManager.makeRandomConsumable());
+        barrels.add(barrel);
+    }
+
+    public void makeHuman()
+    {
+        Human human = new Human("Bob");
+        people.add(human);
+    }
+
+    public void makeGoblin()
+    {
+        Goblin goblin = new Goblin();
+        people.add(goblin);
+    }
+
+    public String listChests()
+    {
+        String chestList = "\n";
+        for (int i = 0; i < chests.size(); i++)
+        {
+            chestList += i + ". Chest";
+            chestList += chests.get(i).getEquipmentList();
         }
-        return str;
+        return chestList;
     }
 
-    public String listPeople() {
-        String str = "";
-        for (int i = 0; i<people.size(); i++) {
-            str += i + ". People\n\t" + people.get(i).getEquipmentList() + ("\n");
+    public String listBarrels()
+    {
+        String barrelList = "\n";
+        for (int i = 0; i < barrels.size(); i++)
+        {
+            barrelList += i + ". Barrel";
+            barrelList += barrels.get(i).getEquipmentList();
         }
-        return str;
+        return barrelList;
     }
 
-    public String listTargets() {
-        return (listBarrels() + listPeople());
+    public String listPeople()
+    {
+        return people.stream().map(person -> person.toString()).reduce("", (acc, s) -> acc + (s + "\n"));
     }
 
-    public String speakTo(Person person) {
+    public String listTargets()
+    {
+        return listPeople() + listBarrels();
+    }
+
+    public String speakTo(Person person)
+    {
         return person.saySomething();
     }
 
-    public int attack(IHitable target) {
+    public int attack(IHitable target)
+    {
         return player.attack(target);
     }
 
-    public void transferEquipment(IInventory source, IInventory destination) {
-        source.transferAllEquipmentFrom(destination);
+    public void transferEquipment(IInventory source, IInventory destination)
+    {
+        int amount = source.countEquipment();
+        for (int i = 0; i < amount; i++)
+        {
+            destination.pickup(source.getEquipment(i));
+        }
+        source.dropAllEquipment();
     }
-    public String peekInside(IInventory inventory) {
+
+    public String peekInside(IInventory inventory)
+    {
         return inventory.getEquipmentList();
     }
-    public String getPersonInfo(Person person) {
+
+    public String getPersonInfo(Person person)
+    {
         return person.toString();
     }
-    public String getPlayerInfo() {
+
+    public String getPlayerInfo()
+    {
         return player.toString();
     }
-    public String listPlayerInventory() {
+
+    public String listPlayerInventory()
+    {
         return player.getEquipmentList();
     }
-    public boolean equipEquipment(Equipment eqmt) {
-        player.equip(eqmt);
-        return true;
+
+    public boolean equipEquipment(Equipment eqmt)
+    {
+        return player.equip(eqmt);
     }
-    //not sure about this
-    public boolean useEquipment(Equipment eqmt, Person target) {
-        target.equip(eqmt);
-        return true;
+
+    public boolean useEquipment(Equipment eqmt, Person target)
+    {
+        if(eqmt instanceof Weapon) return ((Weapon) eqmt).use(target);
+        if(eqmt instanceof Armor) return ((Armor) eqmt).use(target);
+        if(eqmt instanceof Consumable) return ((Consumable)eqmt).use(target);
+        return false;
     }
 }
