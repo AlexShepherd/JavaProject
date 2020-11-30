@@ -19,10 +19,6 @@
  */
 public class ThrowingAxe extends Ranged
 {
-
-    public ThrowingAxe(){
-        super("Throwing Axe", 8, 0, 0, 30, 15);
-    }
     /**
      * Method Name: ThrowingAxe <br>
      * Method Purpose: parameterized constructor <br>
@@ -40,9 +36,19 @@ public class ThrowingAxe extends Ranged
      */
     public ThrowingAxe(String name, int dmg, int ice, int fire, double range, int maxAmmo)
     {
-        super("Throwing Axe", 8, ice, fire, 30, 15);
-        this.setPrice(125);
-        this.setWeaponHandedness(WeaponHandedness.OneHanded);
-        this.setAmmo(3);
+        super(name, dmg, ice, fire, range, maxAmmo);
+        setPrice(125);
+        setWeaponHand(WeaponHandedness.ONEHANDED);
+        addAmmo(3);
+    }
+
+    public ThrowingAxe()
+    {
+        this(0, 0);
+    }
+
+    public ThrowingAxe(int ice, int fire) {
+        this("Throwing Axe", 8, ice, fire, 30, 15);
     }
 }
+

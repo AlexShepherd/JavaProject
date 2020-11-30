@@ -8,8 +8,6 @@
 // Date of Last Modification: 11-11-2020
 // ---------------------------------------------------------------------------
 
-import java.util.Random;
-
 /**
  * Class Name: Chest <br>
  * Class Purpose: Chest class implementing IUsable and IInventory<br>
@@ -21,7 +19,7 @@ import java.util.Random;
  */
 public class Chest implements IUsable, IInventory
 {
-    private EquipmentManager inventory = new EquipmentManager();
+    EquipmentManager inventory;
 
     /**
      * Method Name: Chest <br>
@@ -33,9 +31,7 @@ public class Chest implements IUsable, IInventory
      */
     public Chest()
     {
-        inventory.makeRandomArmor();
-        inventory.makeRandomConsumable();
-        inventory.makeRandomWeapon();
+inventory = new EquipmentManager();
     }
 
     /**
@@ -51,7 +47,7 @@ public class Chest implements IUsable, IInventory
     @Override
     public boolean use(Person person)
     {
-        person.transferAllEquipmentFrom(person);
+        person.transferAllEquipmentFrom(this);
         return true;
     }
 
@@ -82,7 +78,11 @@ public class Chest implements IUsable, IInventory
     @Override
     public void transferAllEquipmentFrom(IInventory other)
     {
-        //get each element from other and pickup() to add to this ArrayList
+        int otherSize = other.countEquipment();
+        for(int i = 0; i < otherSize; i++)
+        {
+            pickup(other.getEquipment(i));
+        }
         other.dropAllEquipment();
     }
 
@@ -111,9 +111,9 @@ public class Chest implements IUsable, IInventory
      * @return int
      */
     @Override
-    public int countWeapon()
+    public int countWeapons()
     {
-        return inventory.countWeapon();
+        return inventory.countWeapons();
     }
 
     /**

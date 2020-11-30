@@ -19,29 +19,19 @@
  */
 public class LongBow extends Ranged
 {
-    public LongBow() {
-        super("Regular Bow", 5, 0, 0, 3, 25);
-    }
-    /**
-     * Method Name: LongBow <br>
-     * Method Purpose: parameterized constructor <br>
-     *
-     * <hr>
-     * Date created: 10-14-2020 <br>
-     * Date last modified: 10-19-2020 <br>
-     *
-     * @param name
-     * @param dmg
-     * @param ice
-     * @param fire
-     * @param range
-     * @param maxAmmo
-     */
     public LongBow(String name, int dmg, int ice, int fire, double range, int maxAmmo)
     {
-        super("Long Box", 5, ice, fire, 150, 100);
-        this.setPrice(85);
-        this.setWeaponHandedness(WeaponHandedness.OneHanded);
-        this.setAmmo(getMaxAmmo()/2);
+        super(name, dmg, ice, fire, range, maxAmmo);
+        setPrice(85);
+        setWeaponHand(WeaponHandedness.TWOHANDED);
+        addAmmo(getMaxAmmo()/2);
+    }
+    public LongBow()
+    {
+        this(0, 0);
+    }
+    public LongBow(int ice, int fire)
+    {
+        this("Long Bow", 5, ice, fire, 150, 100);
     }
 }

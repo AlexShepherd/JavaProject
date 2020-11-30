@@ -20,7 +20,7 @@ public class Helmet extends Armor
      *
      */
     public Helmet() {
-        super("Regular Helmet", 10, false, false);
+        super("Helmet", 1, false, false);
     }
     /**
      * Method Name: Helmet <br>
@@ -37,6 +37,6 @@ public class Helmet extends Armor
      */
     public Helmet(String name, int armorBonus, boolean iceProtection, boolean fireProtection)
     {
-        super("Helmet", 1, iceProtection, fireProtection);
+        super(name, armorBonus, iceProtection, fireProtection);
     }
 }

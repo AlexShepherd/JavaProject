@@ -17,7 +17,7 @@
  * Date last modified: 11-12-2020
  * @author Matthew Beeler
  **/
-import javax.naming.Name;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -35,7 +35,9 @@ public class EquipmentManager {
      * Date last modified: 11-12-2020 <br>
      * @author Matthew Beeler
      */
-    public EquipmentManager() { this.equipment = new ArrayList<Equipment>(); }
+    public EquipmentManager() {
+        this.equipment = new ArrayList<Equipment>();
+    }
 
     /**
      * Method Name: clearAll <br>
@@ -60,10 +62,7 @@ public class EquipmentManager {
      */
     public int countEquipment()
     {
-        int num =0;                //total number of items
-        num += equipment.size();
-        return num;
-
+        return equipment.size();
     }
 
     /**
@@ -78,15 +77,12 @@ public class EquipmentManager {
      */
     public int countArmor()
     {
-        int num= 0;                //total number of items
-        for(int i=0;i < equipment.size(); i++)
+        int armorCount = 0;
+        for(Equipment e:equipment)
         {
-            if(equipment.get(i) instanceof Plackart){ num += 1;}
-            if(equipment.get(i) instanceof Helmet){ num += 1;}
+            if(e instanceof Armor) armorCount++;
         }
-
-        return num;
-
+        return armorCount;
     }
 
     /**
@@ -99,17 +95,14 @@ public class EquipmentManager {
      * @return int number of weapons
      * @author Matthew Beeler
      */
-    public int countWeapon()
+    public int countWeapons()
     {
-        int num= 0;                //total number of items
-        for(int i=0;i < equipment.size(); i++)      //would a switch statement work better here? -MB
+        int weaponCount = 0;
+        for(Equipment e:equipment)
         {
-            if(equipment.get(i) instanceof Spear){ num += 1;}
-            if(equipment.get(i) instanceof Sword){ num += 1;}
-            if(equipment.get(i) instanceof LongBow){ num += 1;}
-            if(equipment.get(i) instanceof ThrowingAxe){ num += 1;}
+            if(e instanceof Weapon) weaponCount++;
         }
-        return num;
+        return weaponCount;
     }
 
     /**
@@ -124,12 +117,12 @@ public class EquipmentManager {
      */
     public int countConsumables()
     {
-        int num= 0;                //total number of items
-        for(int i=0;i < equipment.size(); i++)
+        int consumableCount = 0;
+        for(Equipment e:equipment)
         {
-            if(equipment.get(i) instanceof HealthKit){ num += 1;}
+            if(e instanceof Consumable) consumableCount++;
         }
-        return num;
+        return consumableCount;
     }
 
     /**
@@ -144,8 +137,10 @@ public class EquipmentManager {
      */
     public void removeEquipment(int index)
     {
-        if(index <= equipment.size()){ equipment.remove(index);}
-        else {System.out.print("\nError: This item is not currently owned"); }
+        if(equipment.size() > index)
+        {
+            equipment.remove(index);
+        }
     }
 
     /**
@@ -159,9 +154,11 @@ public class EquipmentManager {
      */
     public String getEquipmentDetails(int index)
     {
-        String info= "\nError: This item is not currently owned";
-        if(index <= equipment.size()){ info = equipment.get(index).toString();}
-        return info;
+        if(equipment.size() > index)
+        {
+            return equipment.get(index).toString();
+        }
+        return "That is not a valid index.";
     }
 
         /**
@@ -175,8 +172,11 @@ public class EquipmentManager {
          */
         public Equipment getEquipment(int index)
         {
-            Equipment e = equipment.get(index);
-            return e;
+            if(equipment.size() > index)
+            {
+                return equipment.get(index);
+            }
+            return null;
         }
 
     /**
@@ -298,35 +298,4 @@ public class EquipmentManager {
                 default:  Ran = new Consumable(); break; */
             return Ran;
         }
-
-    /**         --unsure if still needed
-     * Method Name: removeEquipment <br>
-     * Method Purpose: removes all currently equipped equipment<br>
-     *
-     * <hr>
-     * Date created: 10-20-2020 <br>
-     * Date last modified: 10-20-2020 <br>
-     * @author Matthew Beeler
-     */
-
-   /* private void removeEquipment (int index, ArrayList<String> equipment)
-    {
-       equipment.remove(index);        //removes a specific piece of equipment out of an arraylist
-    } */
-
-    /**         --unsure if still needed
-     * Method Name: getEquipmentDetails <br>
-     * Method Purpose: gets details of all owned equipment<br>
-     *
-     * <hr>
-     * Date created: 10-20-2020 <br>
-     * Date last modified: 10-20-2020 <br>
-     * @author Matthew Beeler
-     */
-
-    /*private String getEquipmentDetails(int index, ArrayList<String> equipment)
-    {
-        return equipment.get(index).toString();
-    }
-    */
 }

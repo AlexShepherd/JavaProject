@@ -33,7 +33,7 @@ public class Armor extends Equipment
      */
     public Armor(String name, int armorBonus, boolean iceProtection, boolean fireProtection)
     {
-        this.setName(name);
+        super(name, 150 ,.8);
         this.armorBonus = armorBonus;
         this.iceProtection = iceProtection;
         this.fireProtection = fireProtection;
@@ -53,20 +53,17 @@ public class Armor extends Equipment
     @Override
     public String getName()
     {
-        String armorName = super.getName();
-        if(fireProtection && iceProtection)
-        {
-            armorName += " of Environmental Protection";
+        String modifiedName = super.getName();
+        if(iceProtection && fireProtection) {
+            return modifiedName + " of Environmental Protection";
         }
-        else if(fireProtection)
-        {
-            armorName += " of Fire Protection";
+        if(iceProtection) {
+            return modifiedName + " of Ice Protection";
         }
-        else if(iceProtection)
-        {
-            armorName += " of Ice Protection";
+        if(fireProtection) {
+            return modifiedName + " of Fire Protection";
         }
-        return armorName;
+        return modifiedName;
     }
 
     /**

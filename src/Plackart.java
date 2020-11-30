@@ -18,8 +18,17 @@ public class Plackart extends Armor
  * Date created: 10-13-2020 <br>
  * Date last modified: 10-19-2020 <br>
  */
+    public Plackart(String name, int armorBonus, boolean iceProtection, boolean fireProtection)
+    {
+        super(name, armorBonus, iceProtection, fireProtection);
+    }
+
     public Plackart() {
-        super("Average Plackart", 10, false, false);
+        this(false, false);
+    }
+
+    public Plackart(boolean iceProtection, boolean fireProtection) {
+        super("Plackart", 4, iceProtection, fireProtection);
     }
 
     /**
@@ -35,8 +44,5 @@ public class Plackart extends Armor
      * @param iceProtection
      * @param fireProtection
      */
-    public Plackart(String name, int armorBonus, boolean iceProtection, boolean fireProtection)
-    {
-        super("Plackart", 4, iceProtection, true);
-    }
+
 }

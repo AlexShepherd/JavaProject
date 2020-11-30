@@ -18,18 +18,18 @@
 
 public class Spear extends Weapon
 {
-    public Spear(){
-        super("Spear", 8, 0, 0, WeaponHandedness.TwoHanded);
-    }
-    public Spear(String name, int dmg, int ice, int fire, WeaponHandedness weaponHand)
+    public Spear(String name, int dmg, int ice, int fire, WeaponHandedness handedness)
     {
-        super(name, dmg, ice, fire, weaponHand);
-        setName("Spear");
-        setNormalDamage(8);
+        super(name, dmg, ice, fire, handedness);
         setPrice(135);
-        setWeaponHandedness(WeaponHandedness.TwoHanded);
     }
-
+    public Spear()
+    {
+        this(0, 0);
+    }
+    public Spear(int ice, int fire) {
+        this("Spear", 8, ice, fire, WeaponHandedness.TWOHANDED);
+    }
 }
 
 

@@ -25,21 +25,6 @@ public class Equipment
 
     /**
      * Method Name: Equipment <br>
-     * Method Purpose: default constructor <br>
-     *
-     * <hr>
-     * Date created: 10-13-2020 <br>
-     * Date last modified: 10-19-2020 <br>
-     */
-    public Equipment()
-    {
-        name = "Equipment";
-        price = 100;
-        durability = 0.5;
-    }
-
-    /**
-     * Method Name: Equipment <br>
      * Method Purpose: parameterized constructor <br>
      *
      * <hr>
@@ -53,9 +38,11 @@ public class Equipment
      */
     public Equipment(String name, int price, double durability)
     {
+        if(durability > 1) this.durability = 1;
+        else if (durability < 0) this.durability = 0;
+        else this.durability = durability;
         this.name = name;
         this.price = price;
-        this.durability = durability;
     }
 
     /**
@@ -119,48 +106,11 @@ public class Equipment
      */
     public String getDurabilityStatus()
     {
-        int ds = 0;
-        String status = "";
-        if (getDurability() >= 0.9)
-        {
-            ds = 1;
-        }
-        else if(getDurability() >= 0.75)
-        {
-            ds = 2;
-        }
-        else if(getDurability() >= 0.5)
-        {
-            ds = 3;
-        }
-        else if(getDurability() >= 0.3)
-        {
-            ds = 4;
-        }
-        else if(getDurability() >= 0)
-        {
-            ds = 5;
-        }
-
-        switch(ds)
-        {
-            case 1:
-                status = "Great condition";
-                break;
-            case 2:
-                status = "Good condition";
-                break;
-            case 3:
-                status = "Fair condition";
-                break;
-            case 4:
-                status = "Poor condition";
-                break;
-            case 5:
-                status = "Almost broken";
-                break;
-        }
-        return status;
+        if(durability >= .9) return "Great Condition";
+        if(durability > .75) return "Good Condition";
+        if(durability > .5) return "Fair Condition";
+        if(durability > .3) return "Poor Condition";
+        return "Almost Broken";
     }
 
     /**
@@ -172,11 +122,11 @@ public class Equipment
      * Date last modified: 10-13-2020 <br>
      *
      * <hr>
-     * @param n input for name
+     * @param name input for name
      */
-    public void setName(String n)
+    public void setName(String name)
     {
-        name = n;
+        this.name = name;
     }
 
     /**
@@ -188,11 +138,11 @@ public class Equipment
      * Date last modified: 10-13-2020 <br>
      *
      * <hr>
-     * @param p input for price
+     * @param price input for price
      */
-    public void setPrice(int p)
+    public void setPrice(int price)
     {
-        price = p;
+        this.price = price;
     }
 
     /**
@@ -204,14 +154,11 @@ public class Equipment
      * Date last modified: 10-19-2020 <br>
      *
      * <hr>
-     * @param d input for durability
+     * @param durability input for durability
      */
-    public void setDurability(double d)
+    public void setDurability(double durability)
     {
-        if(d > 0 && d <= 1)
-        {
-            durability = d;
-        }
+        this.durability = durability;
     }
 
     /**
@@ -227,9 +174,7 @@ public class Equipment
      */
     public int getSalePrice()
     {
-        int salePrice = 0;
-        salePrice = (int)(price * (0.3 + durability));
-        return salePrice;
+        return (int) (price * (.3 + durability));
     }
 
     /**
@@ -243,14 +188,16 @@ public class Equipment
      * <hr>
      * @param d input for adjustment
      */
-    public void adjustDurability(double d)
+    public void addDurability(double d)
     {
-        if(d >= -1 && d <= 1)
+        if(Math.abs(d) <= 1)
         {
-            if(durability + d > 0 && durability + d <= 1)
-            {
-                durability += d;
-            }
+            durability += d;
+        }
+        if(Math.abs(durability) > 1)
+        {
+            if(durability < 0) durability = 0;
+            else durability = 1;
         }
     }
 }

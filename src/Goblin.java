@@ -8,23 +8,22 @@
 // Date of Last Modification: 11/15/20
 // ---------------------------------------------------------------------------
 
-import java.util.ArrayList;
-
-public class Goblin extends Person {
-
-    public Goblin() {
-        super("Goblin");
-        {
-            ArrayList<String> goblinSayings = new ArrayList<String>();
-            goblinSayings.add("STOP!");
-            goblinSayings.add("GIVE ME YOUR GEAR!");
-            goblinSayings.add("GIVE ME THE GEAR OR DIE!");
-
-            setThingsToSay(goblinSayings);
-        }
-    }
-
+public class Goblin extends Person
+{
     public Goblin(String name) {
         super(name);
+        setConversation();
+    }
+
+    public Goblin()
+    {
+        this("Villager");
+    }
+
+    private void setConversation()
+    {
+        thingsToSay.add("Hello, you look like you've been through tough times");
+        thingsToSay.add("I don't like you very much");
+        thingsToSay.add("Go away, leave my treasure be");
     }
 }

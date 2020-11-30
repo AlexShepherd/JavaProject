@@ -40,11 +40,8 @@ public class Ranged extends Weapon
      */
     public Ranged(String name, int dmg, int ice, int fire, double range, int maxAmmo)
     {
-        this.setName(name);
-        this.setNormalDamage(dmg);
-        this.setIceDamage(ice);
-        this.setFireDamage(fire);
-        this.setRange(range);
+        super(name, dmg, ice, fire, WeaponHandedness.VERSATILE);
+        this.range = range;
         this.maxAmmo = maxAmmo;
     }
 
@@ -73,7 +70,7 @@ public class Ranged extends Weapon
      */
     public void setRange(double r)
     {
-        range = r;
+        this.range = range;
     }
 
     /**
@@ -132,19 +129,9 @@ public class Ranged extends Weapon
      */
     public int addAmmo(int a)
     {
-        int ammoAdded = 0;
-        currentAmmo += a;
-        if(currentAmmo > maxAmmo)
-        {
-            int temp = currentAmmo - maxAmmo;
-            ammoAdded = a - temp;
-            currentAmmo = maxAmmo;
-        }
-        else
-        {
-            ammoAdded = a;
-        }
-        return ammoAdded;
+        int temp = a + currentAmmo;
+        currentAmmo = Math.min(temp, maxAmmo);
+        return temp > maxAmmo ? (a-(temp - maxAmmo)):a;
     }
 
     /**
@@ -159,15 +146,7 @@ public class Ranged extends Weapon
     @Override
     public String toString()
     {
-        return "{name:" + "\"" + getName() + "\"" + ", " +
-                "price:" + getPrice() + ", " +
-                "durability:" + "\"" + getDurabilityStatus() + "\"" + ", " +
-                "normal:" + getNormalDamage() + ", " +
-                "ice:" + getIceDamage() + ", " +
-                "fire:" + getFireDamage() + ", " +
-                "weaponHandedness:" + "\"" + getWeaponHand() + "\"" + ", " +
-                "range:" + getRange() + ", " +
-                "currentAmmo:" + getAmmo() + ", " +
-                "maxAmmo:" + getMaxAmmo() + "}";
+        return "{name:\"" + getName()+ "\"" + ", price:" + getPrice() + ", durability: " + "\"" + getDurabilityStatus() + "\"" + "weaponHandedness:" + "\"" + getWeaponHandedness().name() + "\"" +
+                ", range:" + range + ", currentAmmo:" + currentAmmo + ", maxAmmo:" + maxAmmo + "}";
     }
 }
