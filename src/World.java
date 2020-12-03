@@ -16,12 +16,14 @@ public class World
     public ArrayList<Barrel> barrels;
     public ArrayList<Actor> people;
     public Actor player;
+    public ArrayList<Room> rooms;
 
     public World()
     {
         chests = new ArrayList<>();
         barrels = new ArrayList<>();
         people = new ArrayList<>();
+        rooms = new ArrayList<>();
         for (int i = 0; i < 3; i++)
         {
             makeChest();

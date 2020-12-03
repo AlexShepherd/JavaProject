@@ -19,7 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be4ab98c-0306-4ddd-ac55-519d84ea7b50" name="Default Changelist" comment="" />
+    <list default="true" id="be4ab98c-0306-4ddd-ac55-519d84ea7b50" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/GUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/World.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/src/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/src/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,7 +51,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -62,7 +68,14 @@
       <recent name="C:\Users\Alex\Desktop\JavaProject\src\out" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.GUI">
+    <configuration name="GUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI" />
+      <module name="src" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GameDriver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GameDriver" />
       <module name="src" />
@@ -70,19 +83,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GUI" />
         <item itemvalue="Application.GameDriver" />
       </list>
     </recent_temporary>
@@ -100,7 +116,8 @@
       <workItem from="1605954372210" duration="684000" />
       <workItem from="1605958740170" duration="2246000" />
       <workItem from="1606098370679" duration="1472000" />
-      <workItem from="1606302410377" duration="24538000" />
+      <workItem from="1606302410377" duration="28409000" />
+      <workItem from="1607015025870" duration="1724000" />
     </task>
     <servers />
   </component>
@@ -120,34 +137,38 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="488" y="71" key="#com.intellij.ide.util.MemberChooser" timestamp="1606756222393">
+    <state x="488" y="71" key="#com.intellij.ide.util.MemberChooser" timestamp="1607016577553">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="71" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1606756222393" />
+    <state x="488" y="71" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1607016577553" />
     <state x="465" y="255" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1606758827825">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="465" y="255" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1606758827825" />
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1606759551394">
+    <state x="196" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1607015285568">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1606759551394" />
-    <state width="1325" height="404" key="GridCell.Tab.0.bottom" timestamp="1606759395969">
+    <state x="196" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1607015285568" />
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1607014837068">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1325" height="404" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1606759395969" />
-    <state width="1325" height="404" key="GridCell.Tab.0.center" timestamp="1606759395968">
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1607014837068" />
+    <state width="1325" height="153" key="GridCell.Tab.0.bottom" timestamp="1607014841102">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1325" height="404" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1606759395968" />
-    <state width="1325" height="404" key="GridCell.Tab.0.left" timestamp="1606759395968">
+    <state width="1325" height="153" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1607014841102" />
+    <state width="1325" height="153" key="GridCell.Tab.0.center" timestamp="1607014841102">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1325" height="404" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1606759395968" />
-    <state width="1325" height="404" key="GridCell.Tab.0.right" timestamp="1606759395968">
+    <state width="1325" height="153" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1607014841102" />
+    <state width="1325" height="153" key="GridCell.Tab.0.left" timestamp="1607014841102">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1325" height="404" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1606759395968" />
+    <state width="1325" height="153" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1607014841102" />
+    <state width="1325" height="153" key="GridCell.Tab.0.right" timestamp="1607014841102">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1325" height="153" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1607014841102" />
     <state width="1325" height="178" key="GridCell.Tab.1.bottom" timestamp="1605664828277">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -172,6 +193,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="227" y="100" width="912" height="617" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1366.728@0.0.1366.728" timestamp="1605495786929" />
+    <state x="92" y="92" width="1182" height="544" key="dock-window-1" timestamp="1607015822610">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="92" y="92" width="1182" height="544" key="dock-window-1/0.0.1366.728@0.0.1366.728" timestamp="1607015822610" />
     <state x="413" y="126" key="extract.method.dialog" timestamp="1605661525005">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -180,10 +205,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="393" y="104" width="579" height="520" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1606571146479" />
-    <state x="475" y="113" key="refactoring.ChangeSignatureDialog" timestamp="1605496678955">
+    <state x="475" y="113" key="refactoring.ChangeSignatureDialog" timestamp="1607015177134">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="475" y="113" key="refactoring.ChangeSignatureDialog/0.0.1366.728@0.0.1366.728" timestamp="1605496678955" />
+    <state x="475" y="113" key="refactoring.ChangeSignatureDialog/0.0.1366.728@0.0.1366.728" timestamp="1607015177134" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1605657947489">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
