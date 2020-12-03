@@ -20,7 +20,7 @@
 
 import java.util.ArrayList;
 
-public abstract class Person implements IHitable, IInventory
+public abstract class Actor implements IHitable, IInventory
 {
     private String name;
     protected ArrayList<String> thingsToSay;
@@ -31,7 +31,7 @@ public abstract class Person implements IHitable, IInventory
     private int maxHealth;
     private int currentHealth;
 
-    public Person(String name)
+    public Actor(String name)
     {
         this.name = name;
         maxHealth = 50;
@@ -169,7 +169,7 @@ public abstract class Person implements IHitable, IInventory
         return false;
     }
 
-    public int attack(IHitable target)
+    public int attack(IHitable target, String name)
     {
         if(weapon != null)
         {

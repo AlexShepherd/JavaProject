@@ -98,9 +98,9 @@ public class World
         return person.saySomething();
     }
 
-    public int attack(IHitable target)
+    public int attack(IHitable target, String name)
     {
-        return player.attack(target);
+        return player.attack(target, name);
     }
 
     public void transferEquipment(IInventory source, IInventory destination)
