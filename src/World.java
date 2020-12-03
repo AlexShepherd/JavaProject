@@ -14,8 +14,8 @@ public class World
 {
     public ArrayList<Chest> chests;
     public ArrayList<Barrel> barrels;
-    public ArrayList<Person> people;
-    public Person player;
+    public ArrayList<Actor> people;
+    public Actor player;
 
     public World()
     {
@@ -93,16 +93,15 @@ public class World
         return listPeople() + listBarrels();
     }
 
-    public String speakTo(Person person)
+    public String speakTo(Actor actor)
     {
-        return person.saySomething();
+        return actor.saySomething();
     }
 
-    public int attack(IHitable target, String name)
+    public int attack(IHitable target)
     {
-        return player.attack(target, name);
+        return player.attack(target);
     }
-
     public void transferEquipment(IInventory source, IInventory destination)
     {
         int amount = source.countEquipment();
@@ -118,9 +117,9 @@ public class World
         return inventory.getEquipmentList();
     }
 
-    public String getPersonInfo(Person person)
+    public String getPersonInfo(Actor actor)
     {
-        return person.toString();
+        return actor.toString();
     }
 
     public String getPlayerInfo()
@@ -138,7 +137,7 @@ public class World
         return player.equip(eqmt);
     }
 
-    public boolean useEquipment(Equipment eqmt, Person target)
+    public boolean useEquipment(Equipment eqmt, Actor target)
     {
         if(eqmt instanceof Weapon) return ((Weapon) eqmt).use(target);
         if(eqmt instanceof Armor) return ((Armor) eqmt).use(target);

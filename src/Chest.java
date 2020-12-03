@@ -45,7 +45,7 @@ inventory = new EquipmentManager();
      * @param person
      */
     @Override
-    public boolean use(Person person)
+    public boolean use(Actor person)
     {
         person.transferAllEquipmentFrom(this);
         return true;

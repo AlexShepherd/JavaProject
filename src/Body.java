@@ -8,7 +8,7 @@
 // Date of Last Modification: 10-19-2020
 // ---------------------------------------------------------------------------
 
-public class Plackart extends Armor
+public class Body extends Armor
 {
     /**
  * Method Name: Plackart <br>
@@ -18,16 +18,16 @@ public class Plackart extends Armor
  * Date created: 10-13-2020 <br>
  * Date last modified: 10-19-2020 <br>
  */
-    public Plackart(String name, int armorBonus, boolean iceProtection, boolean fireProtection)
+    public Body(String name, int armorBonus, boolean iceProtection, boolean fireProtection)
     {
         super(name, armorBonus, iceProtection, fireProtection);
     }
 
-    public Plackart() {
+    public Body() {
         this(false, false);
     }
 
-    public Plackart(boolean iceProtection, boolean fireProtection) {
+    public Body(boolean iceProtection, boolean fireProtection) {
         super("Plackart", 4, iceProtection, fireProtection);
     }
 

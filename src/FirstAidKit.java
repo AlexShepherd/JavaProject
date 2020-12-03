@@ -53,7 +53,7 @@ public class FirstAidKit extends Consumable {
      * @return boolean
      */
     @Override
-    public boolean use(Person person) {
+    public boolean use(Actor person) {
         return (person.heal(5) > 0);
     }
 }

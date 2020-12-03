@@ -179,9 +179,9 @@ public class Armor extends Equipment
                 "fire:" + fireProtection + "}";
     }
 
-    public boolean use(Person person)
+    public boolean use(Actor actor)
     {
-        person.equip(this);
+        actor.equip(this);
         return true;
     }
 }

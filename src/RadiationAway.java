@@ -59,7 +59,7 @@ public class RadiationAway extends Consumable
      * @return boolean
      */
     @Override
-    public boolean use(Person person)
+    public boolean use(Actor person)
     {
         //needs to be fixed, requires the acid stat
         return false;

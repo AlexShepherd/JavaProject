@@ -14,7 +14,7 @@
  *
  * <hr>
  * Date created: 11-4-2020
- * Date last modified: 11-4-2020
+ * Date last modified: 12-01-2020
  * @author Roberto Hernandez & Flavio Sanguinetti
  */
 
@@ -25,7 +25,7 @@ public abstract class Actor implements IHitable, IInventory
     private String name;
     protected ArrayList<String> thingsToSay;
     private Helmet helmet;
-    private Plackart plackart;
+    private Body body;
     private Weapon weapon;
     private EquipmentManager inventory;
     private int maxHealth;
@@ -72,14 +72,14 @@ public abstract class Actor implements IHitable, IInventory
             ice -= (helmet.hasIceProtection() ? 3:0);
             armorBonus += helmet.getArmorBonus()/2;
         }
-        if(plackart != null)
+        if(body != null)
         {
-            fire -= (plackart.hasFireProtection() ? 3:0);
-            ice -= (plackart.hasIceProtection() ? 3:0);
-            armorBonus += plackart.getArmorBonus()/2;
+            fire -= (body.hasFireProtection() ? 3:0);
+            ice -= (body.hasIceProtection() ? 3:0);
+            armorBonus += body.getArmorBonus()/2;
         }
-        fire = (fire < 0 ? 0:fire);
-        ice = (ice < 0 ? 0:ice);
+        fire = (Math.max(fire, 0));
+        ice = (Math.max(ice, 0));
         int damage = dmg + fire + ice;
         damage = (damage <= armorBonus) ? 0:(damage - armorBonus);
         currentHealth -= damage;
@@ -163,17 +163,17 @@ public abstract class Actor implements IHitable, IInventory
 
     public boolean equip(Equipment e)
     {
-        if(e instanceof Plackart) return equipPlackart((Plackart)e);
+        if(e instanceof Body) return equipPlackart((Body)e);
         if(e instanceof Helmet) return equipHelmet((Helmet)e);
         if(e instanceof Weapon) return equipWeapon((Weapon) e);
         return false;
     }
 
-    public int attack(IHitable target, String name)
+    public int attack(IHitable target)
     {
         if(weapon != null)
         {
-            return target.takeDamage(weapon.getNormalDamage(), weapon.getFireDamage(), weapon.getIceDamage());
+            return target.takeDamage(weapon.getNormalDamage(), weapon.getFireDamage(), weapon.getAcidDamage());
         }
         return 0;
     }
@@ -189,7 +189,7 @@ public abstract class Actor implements IHitable, IInventory
         information += "Name: " + name + "\n";
         information += "Health: " + currentHealth + "/" + maxHealth + "\n";
         information += "Helmet: " + (helmet == null ? "None":helmet.getName()) + "\n";
-        information += "Plackart: " + (plackart == null ? "None":plackart.getName()) + "\n";
+        information += "Plackart: " + (body == null ? "None": body.getName()) + "\n";
         information += "Weapon: " + (weapon == null ? "None":weapon.getName()) + "\n";
         return information;
     }
@@ -201,10 +201,10 @@ public abstract class Actor implements IHitable, IInventory
         return true;
     }
 
-    private boolean equipPlackart(Plackart plackart)
+    private boolean equipPlackart(Body body)
     {
-        if(this.plackart != null) pickup(this.plackart);
-        this.plackart = plackart;
+        if(this.body != null) pickup(this.body);
+        this.body = body;
         return true;
     }
 

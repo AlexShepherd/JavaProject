@@ -8,7 +8,7 @@
 // Date of Last Modification: 11/15/2020
 // ---------------------------------------------------------------------------
 
-public class Human extends Person {
+public class Human extends Actor {
 
     /**
      * Method Name: Human<br>

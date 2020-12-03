@@ -19,5 +19,5 @@
  */
 public interface IUsable
 {
-    public boolean use(Person person);
+    public boolean use(Actor person);
 }

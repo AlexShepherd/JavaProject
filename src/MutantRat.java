@@ -17,13 +17,16 @@ public class MutantRat extends Actor
 
     public MutantRat()
     {
-        this("Villager");
+        this("Mutant Rat");
     }
 
+    private int radiate(int AcidDamage) {
+        //todo
+        return 0;
+    }
     private void setConversation()
     {
-        thingsToSay.add("Hello, you look like you've been through tough times");
-        thingsToSay.add("I don't like you very much");
-        thingsToSay.add("Go away, leave my treasure be");
+        thingsToSay.add("SQUEAK SQUEAK");
+        thingsToSay.add("PSSSSSSST");
     }
 }

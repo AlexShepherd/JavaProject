@@ -277,7 +277,7 @@ public class EquipmentManager {
         {
             Random rand = new Random();
             if(rand.nextInt(2) == 1) return new Helmet();
-            return new Plackart();
+            return new Body();
         }
 
     /**
@@ -291,7 +291,7 @@ public class EquipmentManager {
      */
     public static Consumable makeRandomConsumable()
         {
-            Consumable Ran = new HealthKit();
+            Consumable Ran = new FirstAidKit();
             /*int Num = rand.nextInt(2);  //blocked out currently as Healthkit is the only current consumable.
             switch (Num) {
                 default:  Ran = new Consumable(); break; */

@@ -175,10 +175,10 @@ public class Weapon extends Equipment implements IUsable
      * Date created: 10-13-2020
      * Date last modified: 11-30-2020
      * @return bool
-     * @param person 
+     * @param person
      */
     @Override
-    public boolean use(Person person) {
+    public boolean use(Actor person) {
         attack(person);
         return person.isHitableDestroyed();
     }

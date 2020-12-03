@@ -8,7 +8,7 @@
 // Date of Last Modification: 11/15/20
 // ---------------------------------------------------------------------------
 
-public class Goblin extends Person
+public class Goblin extends Actor
 {
     public Goblin(String name) {
         super(name);
