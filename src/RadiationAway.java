@@ -5,7 +5,7 @@
 // Creator’s name and email: Roberto Hernandez, hernandezr@etsu.edu
 // Course-Section: CSCI-1260-900
 // Creation Date: 11-30-2020
-// Date of Last Modification: 11-30-2020
+// Date of Last Modification: 12-5-2020
 // ---------------------------------------------------------------------------
 
 /**
@@ -14,7 +14,7 @@
  *
  * <hr>
  * Date created: 11-30-2020
- * Date last modified: 11-30-2020
+ * Date last modified: 12-5-2020
  */
 public class RadiationAway extends Consumable
 {
@@ -54,14 +54,13 @@ public class RadiationAway extends Consumable
      *
      * <hr>
      * Date created: 11-30-2020
-     * Date last modified: 11-30-2020
-     * @param person
+     * Date last modified: 12-5-2020
+     * @param actor
      * @return boolean
      */
     @Override
-    public boolean use(Actor person)
+    public boolean use(Actor actor)
     {
-        //needs to be fixed, requires the acid stat
-        return false;
+        return (actor.radAway(10) > 0);
     }
 }
