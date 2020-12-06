@@ -10,7 +10,7 @@ public class CSVReader {
     int i;
 
     public CSVReader(String filePath) {
-        file = filePath;
+        file = "gamerooms.csv";
     }
 
     public String[][] readData() throws IOException {

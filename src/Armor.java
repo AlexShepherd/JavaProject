@@ -20,7 +20,7 @@
 public class Armor extends Equipment
 {
     private int armorBonus;
-    private boolean iceProtection;
+    private boolean acidProtection;
     private boolean fireProtection;
 
     /**
@@ -31,11 +31,11 @@ public class Armor extends Equipment
      * Date created: 10-13-2020 <br>
      * Date last modified: 10-13-2020 <br>
      */
-    public Armor(String name, int armorBonus, boolean iceProtection, boolean fireProtection)
+    public Armor(String name, int armorBonus, boolean acidProtection, boolean fireProtection)
     {
         super(name, 150 ,.8);
         this.armorBonus = armorBonus;
-        this.iceProtection = iceProtection;
+        this.acidProtection = acidProtection;
         this.fireProtection = fireProtection;
         this.setPrice(150);
         this.setDurability(0.8);
@@ -54,10 +54,10 @@ public class Armor extends Equipment
     public String getName()
     {
         String modifiedName = super.getName();
-        if(iceProtection && fireProtection) {
+        if(acidProtection && fireProtection) {
             return modifiedName + " of Environmental Protection";
         }
-        if(iceProtection) {
+        if(acidProtection) {
             return modifiedName + " of Ice Protection";
         }
         if(fireProtection) {
@@ -103,9 +103,9 @@ public class Armor extends Equipment
      * Date last modified: 10-13-2020 <br>
      * @return ice protection boolean
      */
-    public boolean hasIceProtection()
+    public boolean hasAcidProtection()
     {
-        return iceProtection;
+        return acidProtection;
     }
 
     /**
@@ -129,9 +129,9 @@ public class Armor extends Equipment
      * Date created: 10-13-2020 <br>
      * Date last modified: 10-13-2020 <br>
      */
-    public void activateIceProtection()
+    public void activateAcidProtection()
     {
-        iceProtection = true;
+        acidProtection = true;
     }
 
     /**
@@ -155,9 +155,9 @@ public class Armor extends Equipment
      * Date created: 10-13-2020 <br>
      * Date last modified: 10-13-2020 <br>
      */
-    public void deactivateIceProtection()
+    public void deactivateAcidProtection()
     {
-        iceProtection = false;
+        acidProtection = false;
     }
 
     /**
@@ -175,7 +175,7 @@ public class Armor extends Equipment
         return "{name:" + "\"" + getName() + "\"" + ", " +
                 "price:" + getPrice() + ", " +
                 "durability:" + "\"" + getDurabilityStatus() + "\"" + ", " +
-                "ice:" + iceProtection + ", " +
+                "acid:" + acidProtection + ", " +
                 "fire:" + fireProtection + "}";
     }
 

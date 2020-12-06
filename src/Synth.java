@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// File name: Goblin.java
+// File name: Synth.java
 // Project name: Game Project
 // ---------------------------------------------------------------------------
 // Creator’s name and email: Alex Shepherd
@@ -8,22 +8,22 @@
 // Date of Last Modification: 11/15/20
 // ---------------------------------------------------------------------------
 
-public class Goblin extends Actor
+public class Synth extends Actor
 {
-    public Goblin(String name) {
+    public Synth(String name) {
         super(name);
         setConversation();
     }
 
-    public Goblin()
+    public Synth()
     {
-        this("Villager");
+        this("Synth");
     }
 
     private void setConversation()
     {
-        thingsToSay.add("Hello, you look like you've been through tough times");
-        thingsToSay.add("I don't like you very much");
-        thingsToSay.add("Go away, leave my treasure be");
+        thingsToSay.add("GREETINGS HUMAN! CARE FOR A COLD DRINK?");
+        thingsToSay.add("HOW CAN I HELP YOU?");
+        thingsToSay.add("PLEASE END MY SUFFERING");
     }
 }

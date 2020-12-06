@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// File name: Goblin.java
+// File name: Synth.java
 // Project name: Game Project
 // ---------------------------------------------------------------------------
 // Creator’s name and email: Alex Shepherd

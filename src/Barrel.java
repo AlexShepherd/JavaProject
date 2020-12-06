@@ -65,6 +65,16 @@ public class Barrel extends Chest implements IHitable
         return currentHealth;
     }
 
+    @Override
+    public int getMaxRadiation() {
+        return 0;
+    }
+
+    @Override
+    public int getRadiationStatus() {
+        return 0;
+    }
+
     /**
      * Method Name: isHitableDestroyed <br>
      * Method Purpose: implementing isHitableDestroyed method<br>
@@ -78,6 +88,11 @@ public class Barrel extends Chest implements IHitable
     public boolean isHitableDestroyed()
     {
         return currentHealth <= 0;
+    }
+
+    @Override
+    public boolean isHitableRadiated() {
+        return false;
     }
 
     /**
@@ -95,6 +110,11 @@ public class Barrel extends Chest implements IHitable
         int damage = dmg + fire + ice;
         currentHealth -= damage;
         return damage;
+    }
+
+    @Override
+    public int takeRadiation(int acid) {
+        return 0;
     }
 
     /**
@@ -117,5 +137,10 @@ public class Barrel extends Chest implements IHitable
         }
         currentHealth = maxHealth;
         return temp;
+    }
+
+    @Override
+    public int radAway(int amt) {
+        return 0;
     }
 }
