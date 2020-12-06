@@ -18,7 +18,8 @@ public class Room
     public Actor player;
     public ArrayList<Room> rooms;
     public String exit;
-    private String name;
+    public String name;
+    public String description;
 
     public Room(String name, String description)
     {
@@ -162,5 +163,8 @@ public class Room
 
     public String getName() {
         return name;
+    }
+    public String getDescription() {
+        return description;
     }
 }

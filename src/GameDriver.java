@@ -19,6 +19,9 @@ import java.util.Scanner;
  * @author Alex Shepherd
  */
 public class GameDriver {
+
+    private MakeRooms makeMap = new MakeRooms();
+    private final Map map = makeMap.getMap();
     private static boolean gameOver = false;
     /**
      * Method Name: scrollTerminal <br>
@@ -45,9 +48,13 @@ public class GameDriver {
      * Date last modified: 11-14-2020 <br>
      *
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Scanner scan = new Scanner(System.in);
-        
+        MakeRooms makeMap = new MakeRooms();
+        Map map = makeMap.getMap();
+        boolean gameOver = false;
+
+        Room room = map.getRoom("Shelter");
     }
 }
 
