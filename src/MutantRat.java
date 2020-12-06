@@ -21,8 +21,7 @@ public class MutantRat extends Actor
     }
 
     private int radiate(int AcidDamage) {
-        //todo
-        return 0;
+        return 20;
     }
     private void setConversation()
     {

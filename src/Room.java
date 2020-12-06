@@ -60,10 +60,16 @@ public class Room
         people.add(human);
     }
 
+    public void makeMutantRat()
+    {
+        MutantRat mutantRat = new MutantRat();
+        people.add(mutantRat);
+    }
+
     public void makeSynth()
     {
-        Synth goblin = new Synth();
-        people.add(goblin);
+        Synth synth = new Synth();
+        people.add(synth);
     }
 
     public String listChests()
