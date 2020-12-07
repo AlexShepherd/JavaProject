@@ -17,8 +17,8 @@ public class GUI extends Application {
         Button moveDownButton = new Button("↓");
         Button moveLeftButton = new Button("←");
         Button moveRightButton = new Button("→");
-        Button attackButton = new Button("ATTACK");
-        Button idkButton = new Button("IDK YET");
+        Button attackButton = new Button("Attack");
+        Button idkButton = new Button("Exit");
         Text text = new Text("This is a JavaFX text.\nLine 2");
 
 
