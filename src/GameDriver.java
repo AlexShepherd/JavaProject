@@ -54,7 +54,8 @@ public class GameDriver {
         Map map = makeMap.getMap();
         boolean gameOver = false;
 
-        Room room = map.getRoom("Shelter");
+        Room shelter = map.getRoom("Shelter");
+        System.out.println(shelter.listBarrels());
     }
 }
 

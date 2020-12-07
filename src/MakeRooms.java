@@ -7,6 +7,7 @@ public class MakeRooms {
 
     public MakeRooms() {
         map = new Map();
+        writeRooms();
     }
 
     public Map getMap() {

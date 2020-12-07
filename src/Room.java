@@ -23,6 +23,7 @@ public class Room
 
     public Room(String name, String description)
     {
+        this.name = name;
         chests = new ArrayList<>();
         barrels = new ArrayList<>();
         people = new ArrayList<>();
@@ -159,6 +160,10 @@ public class Room
 
     public void makeExit(String exit) {
         this.exit = exit;
+    }
+
+    public void setName() {
+        this.name = name;
     }
 
     public String getName() {
