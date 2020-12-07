@@ -28,11 +28,11 @@ public class Pistol extends Ranged
      */
     public Pistol(String name, int dmg, int acid, int fire, double range, int maxAmmo)
     {
-        //may need balancing
+        //basic constructor; sets the price at 50 with a clip size of 20
         super(name, dmg, acid, fire, range, maxAmmo);
         setPrice(50);
         setWeaponHand(WeaponHandedness.TWOHANDED);
-        addAmmo(getMaxAmmo()/2);
+        addAmmo(getMaxAmmo()/20);
     }
 
     /**
@@ -47,7 +47,7 @@ public class Pistol extends Ranged
      */
     public Pistol(int acid, int fire)
     {
-        //may need balancing
-        this("Pistol", 0, acid, fire, 100, 20);
+        //sets the damage to 10 with a range of 50 and max ammo of 20
+        this("Pistol", 10, acid, fire, 50, 20);
     }
 }

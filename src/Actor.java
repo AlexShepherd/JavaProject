@@ -17,6 +17,18 @@
  * Date last modified: 12-5-2020
  * @author Roberto Hernandez & Flavio Sanguinetti
  */
+/**
+ * Method Name: Actor<br>
+ * Method Purpose: parameterized constructor<br>
+ *
+ * <hr>
+ * Date created: 12-01-2020
+ * Date last modified: 12-5-2020
+ * @Authors : Roberto & Flavio Sanguinetti
+ */
+
+
+
 
 import java.util.ArrayList;
 

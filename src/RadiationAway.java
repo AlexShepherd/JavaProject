@@ -32,6 +32,7 @@ public class RadiationAway extends Consumable
      */
     public RadiationAway(String name, int price, double durability)
     {
+        //basic constructor with no values
         super(name, price, durability);
     }
 
@@ -45,6 +46,7 @@ public class RadiationAway extends Consumable
      */
     public RadiationAway()
     {
+        //constructor setting price to 35 and durability to 1 for single use
         this("Radiation Away", 35, 1);
     }
 
@@ -61,6 +63,8 @@ public class RadiationAway extends Consumable
     @Override
     public boolean use(Actor actor)
     {
+        //this heals an actor's radiation status by 10 if their radiation is greater than 0 using the radAway method
+        //from actor
         return (actor.radAway(10) > 0);
     }
 }

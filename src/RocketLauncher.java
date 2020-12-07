@@ -28,7 +28,7 @@ public class RocketLauncher extends Ranged
      */
     public RocketLauncher(String name, int dmg, int acid, int fire, double range, int maxAmmo)
     {
-        //may need balancing
+        //basic constructor, sets the price to 200 with 2 ammo
         super(name, dmg, acid, fire, range, maxAmmo);
         setPrice(200);
         setWeaponHand(WeaponHandedness.TWOHANDED);
@@ -47,7 +47,7 @@ public class RocketLauncher extends Ranged
      */
     public RocketLauncher(int acid, int fire)
     {
-        //may need balancing
-        this("Rocket Launcher", 0, acid, fire, 300, 5);
+        //sets the damage to 10 acid and 50 fire, 100 range, and 5 max ammo
+        this("Rocket Launcher", 0, 10, 50, 100, 5);
     }
 }

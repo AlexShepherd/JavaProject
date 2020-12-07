@@ -143,7 +143,7 @@ inventory = new EquipmentManager();
     @Override
     public int countEquipment()
     {
-        return countEquipment();
+        return inventory.countWeapons() + inventory.countArmor() + inventory.countWeapons() + inventory.countConsumables();
     }
 
     /**

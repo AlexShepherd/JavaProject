@@ -34,7 +34,6 @@ public class MakeRooms {
         shed.makeExit("Bar");
         map.addRoom(shed);
 
-
         Room bar = new Room("Bar", "rough crowd...");
         bar.makeSynth();
         bar.makeChest();

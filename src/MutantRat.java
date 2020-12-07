@@ -1,15 +1,25 @@
-// ---------------------------------------------------------------------------
-// File name: Synth.java
-// Project name: Game Project
-// ---------------------------------------------------------------------------
-// Creator’s name and email: Alex Shepherd
-// Course-Section: CSCI-1260-900
-// Creation Date: 10-13-2020
-// Date of Last Modification: 11/15/20
-// ---------------------------------------------------------------------------
+/**
+ * Class Name: MutantRat<br>
+ * Class Purpose: MutantRat extends Actor<br>
+ *
+ * <hr>
+ * Date created: 11-30-2020
+ * Date last modified: 12-05-2020
+ * @Author : Flavio Sanguinetti , sanguinetti@etsu.edu
+ */
 
 public class MutantRat extends Actor
 {
+
+    /**
+     * Method Name: MutantRat<br>
+     * Method Purpose: parametirized constructor<br>
+     *
+     * <hr>
+     * Date created: 11-30-2020
+     * Date last modified: 12-05-2020
+     */
+
     public MutantRat(String name) {
         super(name);
         setConversation();
@@ -20,9 +30,32 @@ public class MutantRat extends Actor
         this("Mutant Rat");
     }
 
+    /**
+     * Method Name: Radiate <br>
+     * Method Purpose: parameterized constructor<br>
+     *
+     * <hr>
+     * Date created: 11-30-2020
+     * Date last modified: 11-30-2020
+     * @param AcidDamage
+     */
+
+
     private int radiate(int AcidDamage) {
-        return 20;
+        //todo
+        return 0;
     }
+
+    /**
+     * Method Name: setConversation <br>
+     * Method Purpose: adds string values to the arraylist <br>
+     *
+     * <hr>
+     * Date created: 11-30-2020
+     * Date last modified: 11-30-2020
+     */
+
+
     private void setConversation()
     {
         thingsToSay.add("SQUEAK SQUEAK");
